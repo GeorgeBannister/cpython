@@ -429,6 +429,9 @@ class PathBase(PurePathBase):
     def _unsupported_msg(cls, attribute):
         return f"{cls.__name__}.{attribute} is unsupported"
 
+    def __floordiv__(self, key):
+        return (self / key).resolve(strict=True)
+
     def stat(self, *, follow_symlinks=True):
         """
         Return the result of the stat() system call on this path, like

@@ -157,6 +157,9 @@ class PurePath(PurePathBase):
         except TypeError:
             return NotImplemented
 
+    def __floordiv__(self, key):
+        return (self / key).resolve(strict=True)
+
     def __reduce__(self):
         return self.__class__, tuple(self._raw_paths)
 
